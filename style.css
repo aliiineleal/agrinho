@@ -1,0 +1,477 @@
+/* ==========================================================================
+   VARIÁVEIS DE CONFIGURAÇÃO (Fácil Customização)
+   ========================================================================== */
+:root {
+  /* Paleta de Cores Obrigatória */
+  --cor-azul-profundo: #0a192f;
+  --cor-azul-metalico: #1e3a8a;
+  --cor-azul-celeste: #38bdf8;
+  --cor-verde-tech: #10b981;
+  --cor-ouro: #d97706;
+  --cor-amarelo: #f59e0b;
+  --cor-branco: #ffffff;
+  --cor-preto-puro: #000000;
+  
+  /* Cores de Fundo Estilizadas */
+  --bg-principal: #f8fafc;
+  --bg-card: #ffffff;
+  --texto-principal: #334155;
+  --texto-suave: #64748b;
+
+  /* Tipografia Base via clamp() para Responsividade Fluida */
+  --fonte-titulo: clamp(1.8rem, 4vw, 3.2rem);
+  --fonte-subtitulo: clamp(1.1rem, 2vw, 1.4rem);
+  --fonte-corpo: clamp(1rem, 1vw + 0.5rem, 1.15rem);
+
+  /* Elementos de Estilo UI/UX */
+  --raio-borda: 16px;
+  --sombra-suave: 0 10px 30px rgba(0, 0, 0, 0.05);
+  --sombra-premium: 0 20px 40px rgba(30, 58, 138, 0.12);
+  --transicao: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  --base-font-size: 100%;
+}
+
+/* Modificadores de Acessibilidade (Injetados via JS) */
+html {
+  font-size: var(--base-font-size);
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  background-color: var(--bg-principal);
+  color: var(--texto-principal);
+  line-height: 1.6;
+  transition: var(--transicao);
+}
+
+/* Modo Escuro */
+body.dark-mode {
+  --bg-principal: #0f172a;
+  --bg-card: #1e293b;
+  --texto-principal: #f1f5f9;
+  --texto-suave: #94a3b8;
+  --cor-azul-metalico: #38bdf8;
+}
+
+/* ==========================================================================
+   PAINEL FLUTUANTE DE ACESSIBILIDADE (Posição: Lateral Esquerda)
+   ========================================================================== */
+.acessibilidade-container {
+  position: fixed;
+  left: 20px;
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  background-color: var(--cor-azul-profundo);
+  padding: 12px;
+  border-radius: var(--raio-borda);
+  box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+  z-index: 1000;
+}
+
+.acessibilidade-container button {
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: var(--cor-branco);
+  padding: 10px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: bold;
+  font-size: 0.9rem;
+  transition: var(--transicao);
+}
+
+.acessibilidade-container button:hover:not(:disabled) {
+  background-color: var(--cor-verde-tech);
+  transform: scale(1.05);
+}
+
+.acessibilidade-container button:disabled {
+  opacity: 0.3;
+  cursor: not-allowed;
+}
+
+/* ==========================================================================
+   HERO SECTION
+   ========================================================================== */
+.hero-banner {
+  background: linear-gradient(135deg, rgba(10,25,47,0.95), rgba(30,58,138,0.85)), url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><circle cx="50" cy="50" r="40" fill="none" stroke="white" stroke-opacity="0.03" stroke-width="2"/></svg>');
+  min-height: 70vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 40px 20px;
+  color: var(--cor-branco);
+}
+
+.hero-conteudo {
+  max-width: 900px;
+}
+
+.hero-tag {
+  background: rgba(16, 185, 129, 0.2);
+  border: 1px solid var(--cor-verde-tech);
+  color: var(--cor-verde-tech);
+  padding: 6px 16px;
+  border-radius: 50px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.hero-banner h1 {
+  font-size: var(--fonte-titulo);
+  margin: 20px 0;
+  line-height: 1.2;
+  font-weight: 800;
+  color: var(--cor-branco);
+}
+
+.hero-banner p {
+  font-size: var(--fonte-subtitulo);
+  color: var(--cor-azul-celeste);
+  margin-bottom: 40px;
+}
+
+.btn-primary {
+  display: inline-block;
+  background-color: var(--cor-verde-tech);
+  color: var(--cor-azul-profundo);
+  padding: 14px 32px;
+  border-radius: 30px;
+  font-weight: 700;
+  text-decoration: none;
+  box-shadow: 0 4px 15px rgba(16, 185, 129, 0.4);
+  transition: var(--transicao);
+}
+
+.btn-primary:hover {
+  background-color: var(--cor-amarelo);
+  transform: translateY(-2px);
+}
+
+/* ==========================================================================
+   LAYOUT WRAPPER (CSS GRID Dinâmico de Duas Colunas)
+   ========================================================================== */
+.layout-wrapper {
+  max-width: 1400px;
+  margin: 60px auto;
+  padding: 0 20px;
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 40px;
+  align-items: start;
+}
+
+/* ==========================================================================
+   ESTILIZAÇÃO DE IMAGENS (Regras Estritas Pedidas)
+   ========================================================================== */
+.imagem {
+  width: 100%;
+  margin: 30px 0;
+  border-radius: var(--raio-borda);
+  overflow: hidden;
+  box-shadow: var(--sombra-suave);
+  background-color: rgba(30, 58, 138, 0.05);
+  transition: var(--transicao);
+}
+
+.imagem img {
+  width: 100%;
+  height: auto;
+  display: block;
+  object-fit: cover;
+  transition: var(--transicao);
+}
+
+.imagem:hover {
+  box-shadow: var(--sombra-premium);
+}
+
+.imagem:hover img {
+  transform: scale(1.03);
+}
+
+/* ==========================================================================
+   CONTEÚDO PRINCIPAL & BLOCOS TEXTUAIS
+   ========================================================================== */
+.conteudo-principal {
+  font-size: var(--fonte-corpo);
+}
+
+.artigo-introducao p {
+  margin-bottom: 20px;
+  color: var(--texto-principal);
+}
+
+blockquote {
+  border-left: 5px solid var(--cor-ouro);
+  background: rgba(217, 119, 6, 0.05);
+  margin: 30px 0;
+  padding: 20px;
+  font-style: italic;
+  font-size: 1.2rem;
+  border-radius: 0 var(--raio-borda) var(--raio-borda) 0;
+}
+
+/* ==========================================================================
+   ACCORDION (Mecanismo Expansível Interativo)
+   ========================================================================== */
+.secao-ia h2 {
+  font-size: calc(var(--fonte-titulo) * 0.75);
+  color: var(--cor-azul-metalico);
+  margin-top: 40px;
+}
+
+.accordion {
+  margin-top: 30px;
+}
+
+.accordion-item {
+  background-color: var(--bg-card);
+  border-radius: var(--raio-borda);
+  margin-bottom: 16px;
+  box-shadow: var(--sombra-suave);
+  overflow: hidden;
+}
+
+.accordion-header {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+  background: none;
+  border: none;
+  color: var(--texto-principal);
+  font-size: 1.2rem;
+  font-weight: 600;
+  text-align: left;
+  cursor: pointer;
+  transition: var(--transicao);
+}
+
+.accordion-header:hover {
+  background-color: rgba(56, 189, 248, 0.05);
+}
+
+.accordion-content {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease-out;
+  padding: 0 20px;
+  background-color: rgba(248, 250, 252, 0.5);
+}
+
+body.dark-mode .accordion-content {
+  background-color: rgba(15, 23, 42, 0.3);
+}
+
+.accordion-content p {
+  padding-bottom: 20px;
+  font-size: 1rem;
+  color: var(--texto-suave);
+}
+
+.accordion-item.active .accordion-content {
+  max-height: 300px; /* Ajuste flexível baseado no tamanho do texto */
+}
+
+.accordion-item.active .accordion-header .icon {
+  transform: rotate(45deg);
+  color: var(--cor-ouro);
+}
+
+/* ==========================================================================
+   BARRA LATERAL E FORMULÁRIO DE INSCRIÇÃO (À Direita)
+   ========================================================================== */
+.barra-lateral {
+  position: sticky;
+  top: 40px;
+}
+
+.card-inscricao {
+  background-color: var(--cor-azul-profundo);
+  color: var(--cor-branco);
+  padding: 30px;
+  border-radius: var(--raio-borda);
+  box-shadow: var(--sombra-premium);
+  border-top: 4px solid var(--cor-ouro);
+}
+
+.card-inscricao h3 {
+  font-size: 1.3rem;
+  color: var(--cor-amarelo);
+  line-height: 1.3;
+}
+
+.card-inscricao p {
+  color: var(--cor-azul-celeste);
+  margin-bottom: 24px;
+}
+
+.grupo-campo {
+  margin-bottom: 18px;
+}
+
+.grupo-campo label {
+  display: block;
+  font-size: 0.85rem;
+  margin-bottom: 6px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: rgba(255,255,255,0.7);
+}
+
+.grupo-campo input {
+  width: 100%;
+  padding: 12px;
+  border-radius: 8px;
+  border: 1px solid rgba(255,255,255,0.2);
+  background-color: rgba(255,255,255,0.05);
+  color: var(--cor-branco);
+  box-sizing: border-box;
+  transition: var(--transicao);
+}
+
+.grupo-campo input:focus {
+  outline: none;
+  border-color: var(--cor-verde-tech);
+  background-color: rgba(255,255,255,0.1);
+}
+
+.btn-submit {
+  width: 100%;
+  padding: 14px;
+  background-color: var(--cor-ouro);
+  color: var(--cor-branco);
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: var(--transicao);
+}
+
+.btn-submit:hover {
+  background-color: var(--cor-amarelo);
+}
+
+/* ==========================================================================
+   ÁREA DE COMENTÁRIOS
+   ========================================================================== */
+.secao-comentarios {
+  margin-top: 50px;
+  background: var(--bg-card);
+  padding: 30px;
+  border-radius: var(--raio-borda);
+  box-shadow: var(--sombra-suave);
+}
+
+.form-comentario label {
+  display: block;
+  margin-bottom: 10px;
+  font-weight: 600;
+}
+
+.form-comentario textarea {
+  width: 100%;
+  min-height: 100px;
+  padding: 15px;
+  border-radius: 8px;
+  border: 1px solid var(--texto-suave);
+  background-color: var(--bg-principal);
+  color: var(--texto-principal);
+  box-sizing: border-box;
+  resize: vertical;
+}
+
+.btn-secondary {
+  margin-top: 15px;
+  background-color: var(--cor-azul-metalico);
+  color: var(--cor-branco);
+  padding: 12px 24px;
+  border: none;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: var(--transicao);
+}
+
+.btn-secondary:hover {
+  background-color: var(--cor-azul-profundo);
+}
+
+.lista-comentarios {
+  margin-top: 20px;
+}
+
+.comentario-item {
+  background-color: var(--bg-principal);
+  padding: 15px;
+  border-radius: 8px;
+  margin-bottom: 10px;
+  border-left: 4px solid var(--cor-verde-tech);
+}
+
+/* ==========================================================================
+   RODAPÉ
+   ========================================================================== */
+.rodape-pagina {
+  background-color: var(--cor-preto-puro);
+  color: rgba(255,255,255,0.7);
+  padding: 40px 20px;
+  text-align: center;
+  margin-top: 80px;
+}
+
+.frase-impacto {
+  font-weight: 600;
+  color: var(--cor-branco);
+}
+
+.referencias a {
+  color: var(--cor-azul-celeste);
+  text-decoration: none;
+}
+
+.referencias a:hover {
+  text-decoration: underline;
+}
+
+/* ==========================================================================
+   MÍDIA QUERIES (Responsividade de 320px até UltraWide)
+   ========================================================================== */
+@media (max-width: 1024px) {
+  .layout-wrapper {
+    grid-template-columns: 1fr;
+  }
+  .barra-lateral {
+    position: static;
+  }
+  .acessibilidade-container {
+    left: auto;
+    right: 10px;
+    top: 20px;
+    transform: none;
+    flex-direction: row;
+    padding: 6px;
+    border-radius: 30px;
+  }
+}
+
+@media (max-width: 480px) {
+  :root {
+    --raio-borda: 10px;
+  }
+  .hero-banner {
+    padding: 80px 15px 40px 15px;
+  }
+}
